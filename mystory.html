@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>당신의 마음을 프린트합니다</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .poster {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #ff6b6b;
+        }
+        
+        .main-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #2d3436;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #636e72;
+            font-weight: 500;
+        }
+        
+        .event-info {
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .event-info h3 {
+            color: #ff6b6b;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .event-info p {
+            color: #2d3436;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #ff6b6b, #feca57);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 25px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #ff6b6b;
+            box-shadow: 0 0 0 4px white;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item h3 {
+            color: #2d3436;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .timeline-item p {
+            color: #636e72;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid #feca57;
+        }
+        
+        .highlight strong {
+            color: #e67e22;
+            font-size: 16px;
+        }
+        
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #dfe6e9;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ff6b6b;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #636e72;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: #feca57;
+            color: #2d3436;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        
+        .emoji {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .poster {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <h1 class="main-title">🖨️ 당신의 마음을 프린트합니다</h1>
+            <p class="subtitle">8개월간의 작은 프린터, 큰 이야기</p>
+        </div>
+        
+        <div class="event-info">
+            <h3>📅 2025 M-EP팀 "나만 아니면 돼" 선물교환식</h3>
+            <p><strong>테마:</strong> 올해를 돌아보며 나만의 이야기를 선물로 전하는 시간</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="step-number">STEP 1</span>
+                <h3>문제의 시작</h3>
+                <p>"회사에서 동료 생일 때 축하 메시지 어떻게 전하시나요?"</p>
+                <p>카톡? 슬랙? 아니면... '생일 축하해~' 복붙?</p>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="step-number">STEP 2</span>
+                <h3>2025년 5월, 작은 친구의 등장</h3>
+                <p><span class="emoji">🖨️</span>열전사 방식 미니 프린터</p>
+                <p><span class="emoji">📱</span>블루투스 연결 + 전용 앱</p>
+                <p><span class="emoji">💰</span>그리고... 8천원이라는 가성비</p>
+                <div class="highlight">
+                    <strong>💡 아이디어:</strong> 동료들의 생일 축하 메시지를 받아서 프린트 → 롤링페이퍼 제작!
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="step-number">STEP 3</span>
+                <h3>🎭 3행시 사건의 발단</h3>
+                <p>어느 날, 제가 생일 메시지를 3행시로 프린트했더니...</p>
+                <div class="highlight">
+                    <p><strong>"팀장님이 3행시 하셨으니 우리도 해야 하는 거 아니냐?"</strong></p>
+                    <p style="margin-top: 10px;">갑자기 메신저에 3행시가 쏟아지기 시작!</p>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li>진심 담긴 감동 3행시</li>
+                        <li>개발자 특유의 코드 개그 3행시</li>
+                        <li>억지로 짜맞춘 티 나는 3행시까지...</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="step-number">STEP 4</span>
+                <h3>🏆 즉석 3행시 대회 개최</h3>
+                <p>결국 그날은 '즉석 3행시 대회'로 변질(?)되었고,</p>
+                <p>생일 주인공이 최고의 3행시를 선정!</p>
+                <div class="highlight">
+                    <strong>🎁 우승자 포상:</strong> 커피 쿠폰 수여식까지 완벽하게 진행
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="step-number">STEP 5</span>
+                <h3>⚠️ 깨달음의 순간</h3>
+                <p>8천원짜리 프린터가 저를 <strong>'생일 이벤트 기획자'</strong>로 만들어버렸습니다...</p>
+                <p>더 무서운 건, 이제 생일만 다가오면 동료들이 저를 쳐다본다는 것!</p>
+                <p style="font-style: italic; color: #e74c3c; margin-top: 10px;">"팀장님, 이번엔 또 뭐 할 건가요?" 👀</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-left: 40px; background: #e8f5e9;">
+            <h3>📊 8개월간의 성과</h3>
+            <div class="stats-box">
+                <div class="stat-item">
+                    <span class="stat-number">N장</span>
+                    <span class="stat-label">롤링페이퍼</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1회</span>
+                    <span class="stat-label">3행시 대회</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1회</span>
+                    <span class="stat-label">커피쿠폰 수여식</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">따뜻한 추억</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>🎁 그래서 오늘, 이 '사건의 발단'을 물려드립니다</h3>
+            <p>이 프린터로 2026년엔 여러분도 누군가의 마음을 프린트해보시는 건 어떨까요?</p>
+            <div class="price-tag">스펙: 8천원 | 가치: 프라이스리스</div>
+            <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">
+                ⚠️ 단, 3행시 대회는 책임 못 집니다
+            </p>
+        </div>
+    </div>
+</body>
+</html>
